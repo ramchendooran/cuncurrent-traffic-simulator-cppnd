@@ -29,7 +29,8 @@ void MessageQueue<T>::send(T &&msg)
     // FP.4a : The method send should use the mechanisms std::lock_guard<std::mutex> 
     // as well as _condition.notify_one() to add a new message to the queue and afterwards send a notification.
     std::lock_guard<std::mutex> uLock(_mutex);
-    _queue.push_back(std::move(msg));
+    _queue.clear();
+    _queue.emplace_back(msg);
     _cond.notify_one();
 }
 
@@ -58,6 +59,11 @@ TrafficLightPhase TrafficLight::getCurrentPhase()
     return _currentPhase;
 }
 
+TrafficLight::~TrafficLight()
+{
+    std::cout << "\n Traffic light #"<< _id << "destructed \n";
+}
+
 void TrafficLight::simulate()
 {
     // FP.2b : Finally, the private method „cycleThroughPhases“ should be started in a thread when the public method „simulate“ is called. To do this, use the thread queue in the base class. 
@@ -77,18 +83,18 @@ void TrafficLight::cycleThroughPhases()
     double t_max, t_min;
     t_max = 6.0;
     t_min = 4.0;
-    double cycleDuration = ((double) rand() / (RAND_MAX))*(t_max - t_min) + t_max;
+    double cycleDuration = ((double) rand() / (RAND_MAX))*(t_max - t_min) + t_min;
 
     std::chrono::time_point<std::chrono::system_clock> lastUpdate;
 
     lastUpdate = std::chrono::system_clock::now();
-
+    long timeSinceLastUpdate;
     while(true) {
 
         // sleep at every iteration to reduce CPU usage
         std::this_thread::sleep_for(1ms);
 
-        long timeSinceLastUpdate = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - lastUpdate).count();
+        timeSinceLastUpdate = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - lastUpdate).count();
         // Check if time difference is greater than cycle duration
         if (cycleDuration < timeSinceLastUpdate/1000.0)    
         {
@@ -101,11 +107,11 @@ void TrafficLight::cycleThroughPhases()
             {
                 _currentPhase = TrafficLightPhase::green;
             }
-            TrafficLightPhase msg = _currentPhase;
-            _messageQueue.send(std::move(msg));
+            
+            _messageQueue.send(std::move(_currentPhase));
             lastUpdate = std::chrono::system_clock::now();
             // Reset cycle duration
-            cycleDuration = ((double) rand() / (RAND_MAX))*(t_max - t_min) + t_max;
+            cycleDuration = ((double) rand() / (RAND_MAX))*(t_max - t_min) + t_min;
 
         }
     }

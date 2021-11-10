@@ -1,0 +1,20 @@
+# ninja log v5
+4	1030	1636236886986613944	CMakeFiles/traffic_simulation.dir/src/TrafficObject.cpp.o	f2761f28585a5c7
+1	1034	1636236886994613894	CMakeFiles/traffic_simulation.dir/src/Street.cpp.o	7c3b68a8a3debd76
+1	1323	1636236887282612090	CMakeFiles/traffic_simulation.dir/src/TrafficLight.cpp.o	d1cb33390b4ef179
+0	1906	1636236887862608455	CMakeFiles/traffic_simulation.dir/src/Intersection.cpp.o	ad76f10babe2c646
+4	2109	1636236888066607176	CMakeFiles/traffic_simulation.dir/src/TrafficSimulator-Final.cpp.o	2466a4978cc26d25
+0	2170	1636236888126606800	CMakeFiles/traffic_simulation.dir/src/Graphics.cpp.o	630d75b84afdceea
+5	2196	1636236888154606625	CMakeFiles/traffic_simulation.dir/src/Vehicle.cpp.o	d3ddf16ceeae46da
+2196	2735	1636236888698603214	traffic_simulation	77c593d16caa248c
+1	711	1636237292339927012	CMakeFiles/traffic_simulation.dir/src/Street.cpp.o	7c3b68a8a3debd76
+1	899	1636237292527925713	CMakeFiles/traffic_simulation.dir/src/TrafficLight.cpp.o	d1cb33390b4ef179
+1	1291	1636237292919923005	CMakeFiles/traffic_simulation.dir/src/Intersection.cpp.o	ad76f10babe2c646
+2	1376	1636237293003922424	CMakeFiles/traffic_simulation.dir/src/Vehicle.cpp.o	d3ddf16ceeae46da
+1	1460	1636237293087921845	CMakeFiles/traffic_simulation.dir/src/Graphics.cpp.o	630d75b84afdceea
+2	1736	1636237293363919937	CMakeFiles/traffic_simulation.dir/src/TrafficSimulator-Final.cpp.o	2466a4978cc26d25
+1737	2253	1636237293883916345	traffic_simulation	77c593d16caa248c
+1	880	1636237453042804837	CMakeFiles/traffic_simulation.dir/src/TrafficLight.cpp.o	d1cb33390b4ef179
+880	1414	1636237453578801058	traffic_simulation	77c593d16caa248c
+1	666	1636237489106550077	CMakeFiles/traffic_simulation.dir/src/TrafficLight.cpp.o	d1cb33390b4ef179
+666	1288	1636237489730545661	traffic_simulation	77c593d16caa248c
